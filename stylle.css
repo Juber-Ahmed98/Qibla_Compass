@@ -1,0 +1,81 @@
+body {
+    height: 100vh;
+    font-family: "Averia Sans Libre", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2em;
+    color: #fff;
+    background-color: #14B8A6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.heading {
+    background-color: #0D9488;
+    border-radius: 50px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #f4f4f4;
+}
+
+.heading h1 {
+    font-size: clamp(32px, 5vw, 72px);
+    margin: 0;
+    padding: 0px 40px;
+}
+
+.compasscircle {
+    position: relative;
+    background-color: #fff;
+    height: 40vh;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    filter: drop-shadow(0px 25px 50px #00000025);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.compasscircle img {
+    position: absolute;
+    width: 134%;
+    height: 137%;
+    top: -17%;
+}
+
+.compasscircle .qiblaCompassArrow {
+    position: relative;
+    height: 40%;
+    top: -15%;
+}
+
+#location {
+    margin: 0;
+}
+
+button {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+    background-color: #0D9488;
+    border-radius: 50px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #f4f4f4;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media (max-width: 450px) {
+    button {
+        font-size: 16px;
+        line-height: 22px;
+    }
+}
