@@ -28,7 +28,7 @@ body {
     padding: 0px 40px;
 }
 
-.compasscircle {
+.compassCircle {
     position: relative;
     background-color: #fff;
     height: 40vh;
@@ -41,14 +41,14 @@ body {
     overflow: hidden;
 }
 
-.compasscircle img {
+.compassCircle img {
     position: absolute;
     width: 134%;
     height: 137%;
     top: -17%;
 }
 
-.compasscircle .qiblaCompassArrow {
+.compassCircle .qiblaCompassArrow {
     position: relative;
     height: 40%;
     top: -15%;
