@@ -1,25 +1,29 @@
-const locationOutput = document.getElementById("location")
 const compassCircle = document.querySelector(".qiblahCompassImg");
+const getLocationBtn = document.getElementById("getLocationBtn");
+const locationOutput = document.getElementById("locationOutput");
 
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    }
-    else {
-        locationOutput.innerHTML = "Geolocation is not supported by this browser."
-    }
-}
+getLocationBtn.addEventListener("click", () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    locationOutput.innerText = "Geolocation is not supported by this browser.";
+  }
+});
 
 
 function showPosition(position) {
-    locationOutput.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;;
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+  locationOutput.innerHTML = `Latitude: ${lat} <br> Longitude: ${lon}`;
+
+  // Start compass after getting location
+  startCompass();
 }
 
-locationOutput.addEventListener("click" , () => {
-    window.addEventListener("deviceorientationabsolute", updateCompass)
-});
 
-function updateCompass(event) {
-    const heading = event.alpha;
-    compassCircle.style.transform = `translate(-50%, -50%) rotate(${heading}deg)`;
+function startCompass() {
+  window.addEventListener("deviceorientationabsolute", (event) => {
+    const heading = event.alpha; // 0-360 degrees
+    compassCircle.style.transform = `rotate(${-heading}deg)`;
+  });
 }
