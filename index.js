@@ -37,5 +37,5 @@ function updateCompass(event) {
     const heading = Math.round(event.alpha);
 
     compassCircle.style.transform = `rotate(${-heading}deg)`;
-    getLocationBtn.textContent = `Heading: ${heading}°`;
+    getLocationBtn.textContent = `${heading}°`;
 }
