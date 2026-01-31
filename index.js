@@ -21,5 +21,5 @@ locationOutput.addEventListener("click" , () => {
 
 function updateCompass(event) {
     const heading = event.alpha;
-    compassCircle.computedStyleMap.transform = `translate(-50%, -50%) rotate(${heading}deg)`;
+    compassCircle.style.transform = `translate(-50%, -50%) rotate(${heading}deg)`;
 }

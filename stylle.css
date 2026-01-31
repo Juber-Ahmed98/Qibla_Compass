@@ -31,7 +31,8 @@ body {
 .compassCircle {
     position: relative;
     background-color: #fff;
-    height: 40vh;
+    max-width: 400px;
+    width: 75vw;
     aspect-ratio: 1/1;
     border-radius: 100%;
     filter: drop-shadow(0px 25px 50px #00000025);
@@ -46,6 +47,10 @@ body {
     width: 134%;
     height: 137%;
     top: -17%;
+    transition: transform 0.2s ease-out;
+    /* Smooth rotation */
+    transform-origin: 50% 50%;
+    /* Rotate from center */
 }
 
 .compassCircle .qiblaCompassArrow {
