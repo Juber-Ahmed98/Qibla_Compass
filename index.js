@@ -9,7 +9,7 @@ let lastAngle = 0;
 // Qibla offset andle set to 0
 let qiblaOffset = 0;
 
-const QiblaLat= 21.4225;
+const QiblaLat = 21.4225;
 const QiblaLon = 39.8262;
 
 
@@ -19,23 +19,24 @@ getLocationBtn.addEventListener("click", () => {
     navigator.geolocation.getCurrentPosition(showPosition);
 });
 
+// This bit i doint fully understand the math. i just know degrees need to converted to radians so we can calculate bearings accurately
 function calculateQiblaDirection(userLat, userLon) {
     // converts degrees to radians
     const lat1 = userLat * Math.PI / 180;
-    const lat2 = KAABA_LAT * Math.PI / 180;
+    const lat2 = QiblaLat * Math.PI / 180;
     const lon1 = userLon * Math.PI / 180;
-    const lon2 = KAABA_LON * Math.PI / 180;
-    
+    const lon2 = QiblaLon * Math.PI / 180;
+
     // comnverts 
     const dLon = lon2 - lon1;
     const y = Math.sin(dLon) * Math.cos(lat2);
-    const x = Math.cos(lat1) * Math.sin(lat2) - 
-              Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
-    
+    const x = Math.cos(lat1) * Math.sin(lat2) -
+        Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+
     let bearing = Math.atan2(y, x) * 180 / Math.PI;
-    
+
     bearing = (bearing + 360) % 360;
-    
+
     return bearing;
 }
 
