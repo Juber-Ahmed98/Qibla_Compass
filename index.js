@@ -20,11 +20,13 @@ getLocationBtn.addEventListener("click", () => {
 });
 
 function calculateQiblaDirection(userLat, userLon) {
+    // converts degrees to radians
     const lat1 = userLat * Math.PI / 180;
     const lat2 = KAABA_LAT * Math.PI / 180;
     const lon1 = userLon * Math.PI / 180;
     const lon2 = KAABA_LON * Math.PI / 180;
     
+    // comnverts 
     const dLon = lon2 - lon1;
     const y = Math.sin(dLon) * Math.cos(lat2);
     const x = Math.cos(lat1) * Math.sin(lat2) - 
