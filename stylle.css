@@ -49,9 +49,7 @@ body {
     width: 137%;
     margin-top: 2.5%;
     transition: transform 0.1s linear;
-    /* Smooth rotation */
     transform-origin: 50% 50%;
-    /* Rotate from center */
 }
 
 .compassCircle .qiblaCompassArrow {
