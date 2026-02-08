@@ -14,7 +14,7 @@ getLocationBtn.addEventListener("click", () => {
     navigator.geolocation.getCurrentPosition(showPosition);
 });
 
-// Function to show position. once long and lat positions are retrieved, they are stored in constants called long and lat. fed into an API. City and Country data 
+// Function to show position. once long and lat positions are retrieved, they are stored in constants called long and lat. fed into an API. City and Country data displayed from API
 function showPosition(position) {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
@@ -34,10 +34,13 @@ function showPosition(position) {
         });
 }
 
+
+// Function that retrieves absolute device orientation. real magnetic north. calls update compass function repeatedly many times per second
 function startCompass() {
     window.addEventListener("deviceorientationabsolute", updateCompass, true);
 }
 
+// Update compass function
 function updateCompass(event) {
     if (event.alpha === null || event.absolute !== true) return;
 
