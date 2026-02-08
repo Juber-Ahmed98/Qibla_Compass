@@ -19,7 +19,6 @@ getLocationBtn.addEventListener("click", () => {
     navigator.geolocation.getCurrentPosition(showPosition);
 });
 
-// This bit i doint fully understand the math. i just know degrees need to converted to radians so we can calculate bearings accurately
 function calculateQiblaDirection(userLat, userLon) {
     // converts degrees to radians
     const lat1 = userLat * Math.PI / 180;
