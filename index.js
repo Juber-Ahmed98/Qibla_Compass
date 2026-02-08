@@ -5,7 +5,7 @@ const getLocationBtn = document.getElementById("getLocationBtn");
 // location by Country and City output
 const locationOutput = document.getElementById("locationOutput");
 // Compass angle set to 0
-let compassAngle = 0;
+let lastAngle = 0;
 
 
 // Event listener - Clicking button initiates the start compass funtction and also retrieves the users current location (long and lat coords) then calls the show position function.
@@ -42,18 +42,20 @@ function startCompass() {
 
 // Update compass function
 function updateCompass(event) {
+    // If no location information, then stops the function until we have the 
     if (event.alpha === null || event.absolute !== true) return;
 
     // Android true compass heading
     let heading = (360 - event.alpha) % 360;
 
     // Smooth + unwrap rotation (prevents 360 → 0 snapping)
-    let delta = heading - compassAngle;
+    let delta = heading - lastAngle;
     if (delta > 180) delta -= 360;
     if (delta < -180) delta += 360;
 
-    compassAngle += delta;
+    // Infinite rotation of image
+    lastAngle += delta;
 
-    compassCircle.style.transform = `rotate(${compassAngle}deg)`;
+    compassCircle.style.transform = `rotate(${lastAngle}deg)`;
     getLocationBtn.textContent = `${Math.round(heading)}°`;
 }
