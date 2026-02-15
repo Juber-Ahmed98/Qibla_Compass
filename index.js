@@ -89,7 +89,7 @@ function updateCompass(event) {
     if (delta < -180) delta += 360;
 
     // Infinite rotation of image
-    lastAngle -= delta;
+    lastAngle += delta;
 
     compassCircle.style.transform = `rotate(${lastAngle}deg)`;
     getLocationBtn.textContent = `${Math.round(heading)}°`;
