@@ -92,3 +92,11 @@ function updateCompass(event) {
     compassCircle.style.transform = `rotate(${lastAngle}deg)`;
     getLocationBtn.textContent = `${Math.round(heading)}°`;
 }
+
+const facingQibla = qiblaHeading <= 5 || qiblaHeading >= 355;
+
+if (facingQibla) {
+    getLocationBtn.classList.add("qiblaDirection");
+} else {
+    getLocationBtn.classList.remove("qiblaDirection");
+}
