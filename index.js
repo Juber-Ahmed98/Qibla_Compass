@@ -85,8 +85,8 @@ function updateCompass(event) {
 
     // Smooth + unwrap rotation (prevents 360 → 0 snapping)
     let delta = qiblaHeading - lastAngle;
-    if (delta > 180) delta += 360;
-    if (delta < -180) delta -= 360;
+    if (delta > 180) delta -= 360;
+    if (delta < -180) delta += 360;
 
     // Infinite rotation of image
     lastAngle += delta;
