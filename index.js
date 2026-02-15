@@ -91,7 +91,7 @@ function updateCompass(event) {
     // Infinite rotation of image
     lastAngle += delta;
 
-    compassCircle.style.transform = `rotate(${lastAngle}deg)`;
+    compassCircle.style.transform = `rotate(${-lastAngle}deg)`;
     getLocationBtn.textContent = `${Math.round(heading)}°`;
 
     const facingQibla = qiblaHeading <= 2 || qiblaHeading >= 358;
