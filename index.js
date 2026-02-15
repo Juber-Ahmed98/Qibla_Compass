@@ -128,7 +128,7 @@ function updateCompass(event) {
     }
 
     // Angle between the direction the user is facing and the direction of Mecca
-    let qiblaHeading = (heading - qiblaOffset + 360) % 360;
+    let qiblaHeading = (qiblaOffset - heading + 360) % 360;
 
     // Smooth unwrapped rotation — prevents 359° → 1° snap jumping
     let delta = qiblaHeading - lastAngle;
