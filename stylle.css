@@ -32,7 +32,6 @@ body {
 
 .compassCircle {
     position: relative;
-    background-color: #fff;
     max-width: 400px;
     width: 75vw;
     aspect-ratio: 1/1;
@@ -46,8 +45,7 @@ body {
 
 .compassCircle img {
     position: absolute;
-    width: 137%;
-    margin-top: 2.5%;
+    width: 100%;
     transition: transform 0.1s linear;
     transform-origin: 50% 50%;
 }
