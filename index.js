@@ -91,12 +91,12 @@ function updateCompass(event) {
 
     compassCircle.style.transform = `rotate(${lastAngle}deg)`;
     getLocationBtn.textContent = `${Math.round(heading)}°`;
-}
 
-const facingQibla = qiblaHeading <= 2 || qiblaHeading >= 358;
+    const facingQibla = qiblaHeading <= 2 || qiblaHeading >= 358;
 
-if (facingQibla) {
-    getLocationBtn.classList.add("qiblaDirection");
-} else {
-    getLocationBtn.classList.remove("qiblaDirection");
+    if (facingQibla) {
+        getLocationBtn.classList.add("qiblaDirection");
+    } else {
+        getLocationBtn.classList.remove("qiblaDirection");
+    }
 }
