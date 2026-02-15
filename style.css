@@ -78,12 +78,10 @@ button {
 }
 
 
-button.qibla-locked {
-    background-color: #f0c040;
-    color: #1a1a1a;
+button.qiblaDirection {
     box-shadow:
-        0 0 10px 3px rgba(240, 192, 64, 0.7),
-        0 0 25px 8px rgba(240, 192, 64, 0.4);
+        0 0 10px 3px rgb(255, 255, 255),
+        0 0 25px 8px rgb(255, 255, 255);
 }
 
 @media (max-width: 450px) {

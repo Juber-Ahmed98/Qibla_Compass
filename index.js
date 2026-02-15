@@ -93,7 +93,7 @@ function updateCompass(event) {
     getLocationBtn.textContent = `${Math.round(heading)}°`;
 }
 
-const facingQibla = qiblaHeading <= 5 || qiblaHeading >= 355;
+const facingQibla = qiblaHeading <= 2 || qiblaHeading >= 358;
 
 if (facingQibla) {
     getLocationBtn.classList.add("qiblaDirection");
