@@ -15,7 +15,7 @@ const QiblaLon = 39.8262;
 
 // Event listener - Clicking button initiates the start compass funtction and also retrieves the users current location (long and lat coords) then calls the show position function.
 getLocationBtn.addEventListener("click", () => {
-    startCompass();
+    getLocationBtn.textContent = "Getting Location...";
     navigator.geolocation.getCurrentPosition(showPosition);
 });
 
@@ -61,6 +61,8 @@ function showPosition(position) {
             const country = data.address.country || "Unknown";
 
             locationOutput.innerHTML = `City: ${city}<br>Country: ${country}`;
+
+            startCompass();
         });
 }
 
