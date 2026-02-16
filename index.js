@@ -21,33 +21,40 @@ const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 getLocationBtn.addEventListener("click", () => {
     getLocationBtn.textContent = "Getting Location...";
 
+    // Fire geolocation immediately on the user gesture — iOS requires this
+    // to be synchronous within the click handler, not inside a .then()
+    const geoOptions = {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
+    };
+
+    navigator.geolocation.getCurrentPosition(showPosition, handleLocationError, geoOptions);
+
+    // Handle compass permission separately — runs in parallel, doesn't block geolocation
     if (isIOS && typeof DeviceOrientationEvent.requestPermission === "function") {
-        // iOS 13+ requires explicit user permission for motion sensors
         DeviceOrientationEvent.requestPermission()
             .then(response => {
-                if (response === "granted") {
-                    getGeolocation();
-                } else {
+                if (response !== "granted") {
                     getLocationBtn.textContent = "Compass Permission Denied";
                 }
             })
             .catch(err => {
-                console.error("Permission error:", err);
+                console.error("Compass permission error:", err);
                 getLocationBtn.textContent = "Permission Error";
             });
-    } else {
-        // Android or older iOS (no permission needed)
-        getGeolocation();
     }
 });
 
 
-// Separate geolocation request so it can be called after iOS permission is granted
-function getGeolocation() {
-    navigator.geolocation.getCurrentPosition(showPosition, (err) => {
-        getLocationBtn.textContent = "Location Error";
-        console.error("Geolocation error:", err);
-    });
+function handleLocationError(err) {
+    const messages = {
+        1: "Location denied. Check Settings → Privacy → Location Services.",
+        2: "Location unavailable. Try moving to better signal.",
+        3: "Location timed out. Please try again."
+    };
+    getLocationBtn.textContent = messages[err.code] || "Location Error";
+    console.error("Geolocation error:", err);
 }
 
 
